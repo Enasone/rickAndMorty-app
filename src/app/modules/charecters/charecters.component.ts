@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CharacterResult } from '../models/Character/character_result.interface';
 import { LocationResult } from '../models/Locations/locations_result.interface';
@@ -22,10 +22,12 @@ export class CharectersComponent implements OnInit {
   // genders: any
   pagTest: number = 1
 
+
   constructor(
     private character: CharacterService, 
     private location: LocationService,
-    private router: Router) {}
+    private router: Router,
+    private route: ActivatedRoute) {}
   
 
   ngOnInit() {
@@ -49,39 +51,65 @@ export class CharectersComponent implements OnInit {
           // })
     // })
 
-    // this.router.par
-  }
-
-  searchName(name: string) {
-    this.character.getCharactersName(name).subscribe( res => {
-      this.characters = res.results
+    this.route.queryParams.subscribe( (params: Params) => {
+      // console.log(params)
+      if(params.page) {
+          this.pagTest = +params.page
+          this.character.pages(+params.page).subscribe( res => {
+          this.characters = res.results
+        })
+      } else {
+          this.character.getCharacters().subscribe( res => {
+          this.characters = res.results
+        })
+      }
+      
     })
   }
+
+  // searchName(name: string ) {
+  //   this.character.getCharactersName(name).subscribe( res => {
+  //     this.characters = res.results
+  //   })
+  // }
 
   resetName() {
-    this.character.getCharacters().subscribe( res => {
-      this.characters = res.results
-      // this.names = res.results
-    })
 
-    // this.pagTest = 1
   }
 
   nextPage(number: number) {
+    
+    
+    this.route.queryParams.subscribe( (res: Params) => {
+      if(+res.page) {
 
-    this.character.pages(++this.pagTest).subscribe( res => {
-      this.characters = res.results
-      this.names = res.results
+        this.pagTest = +res.page + 1
+      } else {
+
+        this.character.pages(++this.pagTest).subscribe( res => {
+          this.characters = res.results
+          this.names = res.results
+        })
+      }
     })
   }
 
   prevPage(number: number) {
     if (this.pagTest > 1) {
 
-      this.character.pages(--this.pagTest).subscribe( res => {
-        this.characters = res.results
-        this.names = res.results
+      this.route.queryParams.subscribe( (res: Params) => {
+        if(+res.page) {
+
+          this.pagTest = +res.page - 1
+        } else {
+
+          this.character.pages(++this.pagTest).subscribe( res => {
+            this.characters = res.results
+            this.names = res.results
+          })
+        }
       })
+
     } else {
       this.pagTest = 1
     }

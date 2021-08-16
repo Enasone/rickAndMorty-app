@@ -15,9 +15,9 @@ export class CharacterService {
     return this.http.get<any>(`${environment.backendUrl}/character`);
   }
 
-  public getCharactersName( name: string): Observable<Character> {
-    return this.http.get<any>(`${environment.backendUrl}/character/?name=${name}`);
-  }
+  // public getCharactersName( name: string): Observable<Character> {
+  //   return this.http.get<any>(`${environment.backendUrl}/character/?name=${name}`);
+  // }
 
   public pages( page: number): Observable<Character> {
     return this.http.get<any>(`${environment.backendUrl}/character/?page=${page}`);

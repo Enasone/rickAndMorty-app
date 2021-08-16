@@ -1,63 +1,8 @@
-<div class="main_block">
-    <!-- <div class="main_filter">
-        <div>
-            <div>
-                Name
-            </div>
-
-            <button *ngFor="let nameses of names" (click)="searchName(nameses.name)">{{nameses.name}}</button>
-           
-
-        </div>
-
-        <div>
-            <div>
-                Status
-            </div>
-
-            <select >
-                <option value="">alive</option>
-                <option value="">dead</option>
-                <option value="">unknown</option>
-            </select>
-
-        </div>
-
-        <div>
-            <div>
-                Species
-            </div>
-
-            <select >
-                <option *ngFor="let spec of species" [value]="spec">{{spec}}</option>
-            </select>
-
-        </div>
-
-        <div>
-            <div>
-                Type
-            </div>
-
-            <select >
-                <option *ngFor="let types of type" [value]="types">{{types}}</option>
-            </select>
-
-        </div>
-
-        <div>
-            <div>
-                Gender
-            </div>
-
-            <select >
-                <option *ngFor="let gender of genders" value="">{{gender}}</option>
-            </select>
-
-        </div>
-        
-    </div> -->
-
+<div 
+    class="main_block"
+    [routerLink]="['/']"
+    [queryParams]="{page: pagTest}"
+    >
 
     <div *ngFor='let character of characters' class="characters_block">
         <img [src]="character.image">
@@ -69,7 +14,7 @@
             <p><strong>Status:</strong> {{character.status}}</p>
 
             <div *ngIf='character.type != ""'>
-                <p>Type: {{character.type}}</p>
+                <p><strong>Type</strong>: {{character.type}}</p>
             </div>
         </div>
 
