@@ -1,0 +1,16 @@
+.main_block {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.characters_block {
+    padding: 5px;
+}
+
+.main_filter {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    background-color: blanchedalmond;
+    text-align: left;
+}
