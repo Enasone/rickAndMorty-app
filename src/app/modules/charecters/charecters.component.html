@@ -1,7 +1,7 @@
 <div 
     class="main_block"
     [routerLink]="['/']"
-    [queryParams]="{page: pagTest}"
+    [queryParams]="{page: pages}"
     >
 
     <div *ngFor='let character of characters' class="characters_block">
@@ -22,7 +22,7 @@
 
     <div>
         <div>
-            <button (click)="prevPage(pagTest)">Предыдущая страница</button>
+            <button (click)="prevPage(pages)">Предыдущая страница</button>
         </div>
 
         <div>
@@ -30,7 +30,7 @@
         </div>
 
         <div>
-            <button (click)="nextPage(pagTest)">Следующая страница</button>
+            <button (click)="nextPage(pages)">Следующая страница</button>
         </div>
     </div>
 </div>
