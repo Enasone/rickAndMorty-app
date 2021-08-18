@@ -1,1 +1,34 @@
-<p>locations works!</p>
+<div 
+    [routerLink]="['/locations']"
+    [queryParams]="{page: pages}"
+    >
+    <div class="block_location">
+        <div *ngFor="let location of locations">
+
+            <div class="main_block_locations">
+
+                <h3>{{location.name}}</h3>
+                <p>{{location.type}}</p>
+                <p>{{location.dimension}}</p>
+                <button> Residents</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <button (click)="prevPage(pages)">Предыдущая страница</button>
+        </div>
+
+        <div>
+            <button (click)="reset()">Сбросить</button>
+        </div>
+
+        <div>
+            <button (click)="nextPage(pages)" [disabled]="locationInfo?.pages == pages">Следующая страница</button>
+        </div>
+    </div>
+
+</div>

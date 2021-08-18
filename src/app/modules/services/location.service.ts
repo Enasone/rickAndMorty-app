@@ -14,4 +14,8 @@ export class LocationService {
   public getLocations(): Observable<Locations> {
     return this.http.get<any>(`${environment.backendUrl}/location`)
   }
+
+  public locationPages( page: number): Observable<Locations> {
+    return this.http.get<any>(`${environment.backendUrl}/location/?page=${page}`);
+  }
 }

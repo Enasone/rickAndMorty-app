@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { CharacterResult } from '../models/Character/character_result.interface';
 import { LocationResult } from '../models/Locations/locations_result.interface';
 import { CharacterService } from '../services/character.service';
@@ -14,17 +13,11 @@ import { LocationService } from '../services/location.service';
 export class CharectersComponent implements OnInit {
   
   characters?: CharacterResult[]
-  names?: CharacterResult[]
-  locations?: LocationResult[]
-
-
   pages: number = 1
 
 
   constructor(
-    private character: CharacterService, 
-    private location: LocationService,
-    private router: Router,
+    private character: CharacterService,
     private route: ActivatedRoute) {}
   
 

@@ -1,0 +1,16 @@
+.main_block_locations {
+    padding: 10px;
+    width: 205px;
+    display: flex;
+    height: 230px;
+    flex-flow: column;
+    justify-content: space-between;
+    border: 1px solid gray;
+    background-color: snow;
+    margin: 5px;
+}
+
+.block_location {
+    display: flex;
+    flex-flow: wrap;
+}
