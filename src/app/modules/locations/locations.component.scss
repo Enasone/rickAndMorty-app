@@ -13,4 +13,25 @@
 .block_location {
     display: flex;
     flex-flow: wrap;
+    justify-content: space-evenly;
 }
+
+.flex-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.main_btn_block {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100px;
+  align-items: center;
+}
+
+//.size-text {
+//  font-size: 1.5rem;
+//}
+//
+//.color-card {
+//  background-color: #ee6e73 !important;
+//}

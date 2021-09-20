@@ -10,12 +10,14 @@ import { EffectsModule } from '@ngrx/effects';
 import { CharectersComponent } from './modules/charecters/charecters.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LocationsComponent } from './modules/locations/locations.component';
+import {MainLayoutComponent} from "./modules/shared/components/main-layout.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     CharectersComponent,
-    LocationsComponent
+    LocationsComponent,
+    MainLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -29,4 +31,4 @@ import { LocationsComponent } from './modules/locations/locations.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

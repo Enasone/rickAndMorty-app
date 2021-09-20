@@ -1,26 +1,53 @@
-<div 
-    class="main_block"
-    [routerLink]="['/']"
+<div
+    [routerLink]="['/characters']"
     [queryParams]="{page: pages}"
+    *ngIf="characters.length; else loading"
     >
+    <div class="main_block">
+      <div *ngFor='let character of characters' class="characters_block">
+          <img [src]="character.image">
 
-    <div *ngFor='let character of characters' class="characters_block">
-        <img [src]="character.image">
+          <div>
+              <p><strong>Name:</strong> {{character.name}}</p>
+              <p><strong>Gender:</strong> {{character.gender}}</p>
+              <p><strong>Species:</strong> {{character.species}}</p>
+              <p><strong>Status:</strong> {{character.status}}</p>
 
-        <div>
-            <p><strong>Name:</strong> {{character.name}}</p>
-            <p><strong>Gender:</strong> {{character.gender}}</p>
-            <p><strong>Species:</strong> {{character.species}}</p>
-            <p><strong>Status:</strong> {{character.status}}</p>
-
-            <div *ngIf='character.type != ""'>
-                <p><strong>Type</strong>: {{character.type}}</p>
-            </div>
-        </div>
-
+              <div *ngIf='character.type != ""'>
+                  <p><strong>Type</strong>: {{character.type}}</p>
+              </div>
+          </div>
+      </div>
     </div>
 
-    <div>
+<!--    </div>-->
+<!--    <div>-->
+<!--      <div class="col s12 m7" *ngFor='let character of characters'>-->
+<!--        <div class="card horizontal size-card">-->
+<!--          <div class="card-image size-img">-->
+<!--            <img [src]="character.image">-->
+<!--          </div>-->
+<!--          <div class="card-stacked">-->
+<!--            <div class="card-content">-->
+<!--              <p><strong>Name:</strong> {{character.name}}</p>-->
+<!--              <p><strong>Gender:</strong> {{character.gender}}</p>-->
+<!--              <p><strong>Species:</strong> {{character.species}}</p>-->
+<!--              <p><strong>Status:</strong> {{character.status}}</p>-->
+<!--            </div>-->
+
+<!--            <div *ngIf='character.type != ""'>-->
+<!--              <p><strong>Type</strong>: {{character.type}}</p>-->
+<!--            </div>-->
+
+<!--            <div class="card-action">-->
+<!--              <a href="#">This is a link</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="main_btn_block">
         <div>
             <button (click)="prevPage(pages)">Предыдущая страница</button>
         </div>
@@ -34,3 +61,7 @@
         </div>
     </div>
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка...</p>
+</ng-template>

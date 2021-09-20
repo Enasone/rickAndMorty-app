@@ -11,7 +11,7 @@ import { LocationService } from '../services/location.service';
 })
 export class LocationsComponent implements OnInit {
 
-  locations?: LocationResult[]
+  locations: LocationResult[] = []
   locationInfo?: LocationInfo
 
   pages: number = 1
@@ -35,7 +35,7 @@ export class LocationsComponent implements OnInit {
           this.locationInfo = res.info
         })
       }
-      
+
     })
   }
 

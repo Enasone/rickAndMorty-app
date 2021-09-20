@@ -11,17 +11,19 @@ import { LocationService } from '../services/location.service';
   styleUrls: ['./charecters.component.scss']
 })
 export class CharectersComponent implements OnInit {
-  
-  characters?: CharacterResult[]
+
+  characters: CharacterResult[] = []
   pages: number = 1
+  loader: boolean = false
 
 
   constructor(
     private character: CharacterService,
     private route: ActivatedRoute) {}
-  
+
 
   ngOnInit() {
+
 
     this.route.queryParams.subscribe( (params: Params) => {
       if(params.page) {
@@ -34,7 +36,7 @@ export class CharectersComponent implements OnInit {
           this.characters = res.results
         })
       }
-      
+
     })
   }
 

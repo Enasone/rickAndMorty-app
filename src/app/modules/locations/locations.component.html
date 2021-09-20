@@ -1,23 +1,35 @@
-<div 
+<div
     [routerLink]="['/locations']"
     [queryParams]="{page: pages}"
+    *ngIf="locations.length; else loading"
     >
     <div class="block_location">
         <div *ngFor="let location of locations">
 
             <div class="main_block_locations">
 
-                <h3>{{location.name}}</h3>
-                <p>{{location.type}}</p>
-                <p>{{location.dimension}}</p>
-                <button> Residents</button>
+              <span style="font-size: 1rem"><strong>{{location.name}}</strong></span>
+              <span>{{location.type}}</span>
+              <span>{{location.dimension}}</span>
+              <button class="waves-effect waves-light btn"> Residents</button>
 
             </div>
 
         </div>
     </div>
 
-    <div>
+<!--    <div class="row">-->
+<!--      <div class="col s12 m5" *ngFor="let location of locations">-->
+<!--        <div class="card-panel teal flex-block color-card">-->
+<!--          <span class="white-text size-text"><strong>{{location.name}}</strong></span>-->
+<!--          <span class="white-text">{{location.type}}</span>-->
+<!--          <span class="white-text">{{location.dimension}}</span>-->
+<!--          <button class="waves-effect waves-light btn"> Residents</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <div class="main_btn_block">
         <div>
             <button (click)="prevPage(pages)">Предыдущая страница</button>
         </div>
@@ -32,3 +44,7 @@
     </div>
 
 </div>
+
+<ng-template #loading>
+  <p class="text-center">Идет загрузка...</p>
+</ng-template>
